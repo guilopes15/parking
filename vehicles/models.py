@@ -41,7 +41,7 @@ class Vehicle(models.Model):
         related_name='vehicle',
         verbose_name='Tipo do Veiculo'
     )
-    licence_plate = models.CharField(
+    license_plate = models.CharField(
         max_length=10,
         unique=True,
         verbose_name='Placa',
@@ -88,4 +88,4 @@ class Vehicle(models.Model):
 
     
     def __str__(self):
-        return self.licence_plate
+        return self.license_plate
