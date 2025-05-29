@@ -11,6 +11,7 @@ django = "^5.2"
 djangorestframework = "^3.16.0"
 django-jazzmin = "^3.0.1"
 djangorestframework-simplejwt = "^5.5.0"
+django-rql = "^4.4.1"
 
 [tool.poetry.group.dev.dependencies]
 flake8 = "^7.2.0"
