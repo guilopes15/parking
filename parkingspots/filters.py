@@ -12,7 +12,7 @@ class ParkingRecordFilterClass(AutoRQLFilterClass):
     FILTERS = (
         {
             'filter': 'license_plate',
-            'source': 'vehicle__licensw_plate',
-        }
+            'source': 'vehicle__license_plate',
+        },
     )
 
