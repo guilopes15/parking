@@ -5,3 +5,7 @@ class VehiclesConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
     name = 'vehicles'
     verbose_name = 'Veiculos'
+
+    
+    def ready(self):
+        import vehicles.signals

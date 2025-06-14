@@ -87,7 +87,7 @@ DATABASES = {
         'NAME': 'parking_service',
         'USER': 'postgres',
         'PASSWORD': 'postgres',
-        'HOST': 'parking_db',
+        'HOST': 'parking_db', #rede
         'PORT': '5432',
     }
 }
@@ -299,3 +299,5 @@ SPECTACULAR_SETTINGS = {
     'DESCRIPTION': 'API do Parking Service',
     'VERSION': '1.0.0'
 }
+
+CELERY_BROKER_URL = 'amqp://guest:guest@rabbitmq:5672//'  # user:password@host:port

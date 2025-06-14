@@ -1,11 +1,21 @@
 services:
   parking_services:
     build: .
+    command: sh -c "poetry run python manage.py migrate && poetry run python manage.py runserver 0.0.0.0:8000"
     restart: always
     ports:
       - 8000:8000
     depends_on:
       - parking_db
+      - rabbitmq
+
+  worker:
+    build: .
+    command: celery -A parking worker -l INFO
+    restart: always
+    depends_on:
+      - parking_db
+      - rabbitmq
 
   parking_db:
     image: postgres:15
@@ -17,6 +27,17 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_DB=parking_service
-
+  
+  rabbitmq:
+    image: rabbitmq:4.0-management
+    ports:
+      - 5672:5672
+      - 15672:15672
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+    volumes:
+      - rabbitmq-data:/var/lib/rabbitmq
 volumes:
   postgres_data:
+  rabbitmq-data:
